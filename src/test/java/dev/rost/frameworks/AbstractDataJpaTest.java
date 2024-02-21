@@ -10,14 +10,14 @@ import org.testcontainers.utility.DockerImageName;
 
 @DataJpaTest
 @Testcontainers
-public class AbstractDataJpaTest {
+class AbstractDataJpaTest {
 
     @Container
     static PostgreSQLContainer<?> postgresContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:11.1"));
 
 
     @DynamicPropertySource
-    public static void overrideProps(DynamicPropertyRegistry registry) {
+    static void overrideProps(DynamicPropertyRegistry registry) {
         registry.add("spring.datasource.url", postgresContainer::getJdbcUrl);
         registry.add("spring.datasource.username", postgresContainer::getUsername);
         registry.add("spring.datasource.password", postgresContainer::getPassword);
