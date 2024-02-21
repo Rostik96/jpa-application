@@ -1,0 +1,13 @@
+spring:
+  test:
+    database:
+      replace: none
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  sql:
+    init:
+      mode: always
+
+logging:
+  config: classpath:logback-test.xml
